@@ -1,0 +1,41 @@
+
+<div xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+	<nav class="navbar navbar-default">
+		<a class="navbar-brand" th:href="@{/}">T<span style="color:red;font-weight:bold">O</span>D<span style="color:yellow;font-weight:bold">O</span>s List</a>
+		<div class="nabar-nav" sec:authorize="isAuthenticated()" align="right">
+			<p class="navbar-text" align="right">
+				<span>Welcome <span sec:authentication="authorities"></span></span>
+			</p>
+			<p class="navbar-text" align="right">
+				<span>You login by email: <span sec:authentication="name"></span></span>
+			</p>
+			<form th:action="@{/perform-logout}" method="post"
+				style="padding-top: 8px">
+				<input class="btn btn-danger" type="submit" value="logout">
+			</form>
+		</div>
+	</nav>
+</div>
+
+<!--      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/}">TODOs List</a>
+                <div sec:authorize="isAuthenticated()">
+                	<form  th:action="@{/perform-logout}" method="post" style="padding-left: 120px; padding-top: 8px">
+                    	<div align="right" >
+                        	<input class="btn btn-danger" type="submit" value="logout">
+                    	</div>
+               	 	</form>
+                </div>
+                <div class="welcome" align="right" >
+            		<span sec:authorize="isAuthenticated()">Welcome <span sec:authentication="authorities"></span></span>
+        		</div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+-->

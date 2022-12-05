@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Please sign in</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <div class="alert alert-danger" role="alert" th:if="${error}">Invalid user credentials</div><p>
+<!--          <div class="alert alert-info" role="alert" th:if="${logout}">You are logged out</div><p>  -->
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+        </p>
+        <p>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        </p>
+        <input th:name="${_csrf.parameterName}" type="hidden" th:value="${_csrf.token}" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+    <form class="form-signin" method="get" action="/users/create">
+    <div style="text-align: center"><p>Don't have an account?</p><button type="submit" class="w3-button w3-block w3-green w3-padding-16 w3-hover-green w3-opacity-min w3-hover-opacity-off" style="
+    height: 40px; width: 200px;background: deepskyblue;
+    color: white;border-radius: 15px;
+    font-size: large;">Register</button></div>
+    </form>
+</div>>
+</body></html>
