@@ -1,19 +1,19 @@
 package leo.springwebapp.spring_web_todolist.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import leo.springwebapp.spring_web_todolist.exception.NullEntityReferenceException;
 import leo.springwebapp.spring_web_todolist.model.Role;
 import leo.springwebapp.spring_web_todolist.repository.RoleRepository;
 import leo.springwebapp.spring_web_todolist.service.RoleService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class RoleServiceImpl implements RoleService {
 
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
 
     public RoleServiceImpl(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;

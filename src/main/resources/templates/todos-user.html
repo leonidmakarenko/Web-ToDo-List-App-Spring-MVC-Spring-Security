@@ -34,11 +34,16 @@
             <td th:text="${#temporals.format(todo.createdAt, 'dd.MM.yyyy HH:mm')}"/>
             <td th:text="${todo.getOwner().firstName + ' ' + todo.getOwner().lastName}"></td>
             <td>
-                <a  th:href="@{|/todos/${todo.id}/update/users/${todo.owner.id}|}" >Edit</a>
+                <a th:href="@{|/todos/${todo.id}/update/users/${todo.owner.id}|}">
+                    <button class="btn btn-link" th:disabled="${todo.owner.id != user.id &&
+                    !#authorization.expression('hasAuthority(''ADMIN'')')}">Edit</button>
+                </a>
             </td>
             <td>
-                <a th:href="@{|/todos/${todo.id}/delete/users/${todo.owner.id}|}">Remove</a>
- <!--                <a th:href="@{|/todos/${todo.id}/delete/users/${todo.owner.id}|}">Remove</a>   -->
+                <a th:href="@{|/todos/${todo.id}/delete/users/${todo.owner.id}|}">
+                    <button class="btn btn-link" th:disabled="${todo.owner.id != user.id &&
+                    !#authorization.expression('hasAuthority(''ADMIN'')')}">Remove</button>
+                </a>
             </td>
         </tr>
     </table>

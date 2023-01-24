@@ -1,27 +1,27 @@
 package leo.springwebapp.spring_web_todolist.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import leo.springwebapp.spring_web_todolist.exception.NullEntityReferenceException;
 import leo.springwebapp.spring_web_todolist.model.Task;
 import leo.springwebapp.spring_web_todolist.repository.TaskRepository;
 import leo.springwebapp.spring_web_todolist.service.TaskService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TaskServiceImpl implements TaskService {
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
     public TaskServiceImpl(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
 
     @Override
-    public Task create(Task role) {
-        if (role != null) {
-            return taskRepository.save(role);
+    public Task create(Task task) {
+        if (task != null) {
+            return taskRepository.save(task);
         }
         throw new NullEntityReferenceException("Task cannot be 'null'");
     }
@@ -33,10 +33,10 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task update(Task role) {
-        if (role != null) {
-            readById(role.getId());
-            return taskRepository.save(role);
+    public Task update(Task task) {
+        if (task != null) {
+            readById(task.getId());
+            return taskRepository.save(task);
         }
         throw new NullEntityReferenceException("Task cannot be 'null'");
     }

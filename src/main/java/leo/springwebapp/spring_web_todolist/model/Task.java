@@ -1,6 +1,7 @@
 package leo.springwebapp.spring_web_todolist.model;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tasks")

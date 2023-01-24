@@ -9,10 +9,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//@RequiredArgsConstructor
 @Component
 public class CustomAuthenticationManager implements AuthenticationManager {
-	
+
 	private final List<AuthenticationProvider> authenticationProviders;
 	
 	@Autowired

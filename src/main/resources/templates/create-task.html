@@ -31,7 +31,7 @@
         <input class="btn btn-info" type="submit" value="Create"/>
         <input class="btn btn" type="reset" value="Clear"/>
     </div>
-    <input type="hidden" name="todoId" th:value="${todo.id}">
+<!--    <input type="hidden" name="todoId" th:value="${todo.id}">-->
 </form>
     <a th:href="@{|/todos/${todo.id}/tasks|}">Go to Task List</a>
 </body>

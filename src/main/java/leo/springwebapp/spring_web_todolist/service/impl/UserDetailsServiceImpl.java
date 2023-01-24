@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
-//@RequiredArgsConstructor
 @Service("userDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {
+
 	private final UserRepository userRepository;
 
 	@Autowired
@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     	userDetails.setPassword(user.getPassword());
     	userDetails.setUserId(user.getId());
     	userDetails.setUserName(user.getEmail());
-    	userDetails.setUserRole(user.getRole().getName());   	
+    	userDetails.setUserRole(user.getRole().getName());
     	return userDetails;
     }
 }

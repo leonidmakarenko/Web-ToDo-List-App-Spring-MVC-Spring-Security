@@ -14,7 +14,6 @@
     <form class="form-signin" method="post" action="/login">
         <h2 class="form-signin-heading">Please sign in</h2>
         <div class="alert alert-danger" role="alert" th:if="${error}">Invalid user credentials</div><p>
-<!--          <div class="alert alert-info" role="alert" th:if="${logout}">You are logged out</div><p>  -->
         <p>
             <label for="username" class="sr-only">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>

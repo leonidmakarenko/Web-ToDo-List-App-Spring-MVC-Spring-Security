@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -9,6 +10,12 @@
     <div th:replace="header"></div>
     <div class="col-md-offset-2 col-sm-8">
         <h2>List of Users</h2>
+        <form sec:authorize="hasAuthority('ADMIN')" th:action="@{|/users/create|}" method="get">
+            <div  align="right" >
+                <input class="btn-info btn-lg" type="submit" value="Add New User">
+            </div>
+        </form>
+
         <br>
         <table class="table">
             <thead>

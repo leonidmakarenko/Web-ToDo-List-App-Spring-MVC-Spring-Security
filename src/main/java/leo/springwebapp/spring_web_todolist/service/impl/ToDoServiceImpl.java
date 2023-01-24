@@ -1,19 +1,21 @@
 package leo.springwebapp.spring_web_todolist.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import leo.springwebapp.spring_web_todolist.exception.NullEntityReferenceException;
 import leo.springwebapp.spring_web_todolist.model.ToDo;
 import leo.springwebapp.spring_web_todolist.repository.ToDoRepository;
+import leo.springwebapp.spring_web_todolist.security.CustomUserDetails;
 import leo.springwebapp.spring_web_todolist.service.ToDoService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ToDoServiceImpl implements ToDoService {
 
-    private ToDoRepository todoRepository;
+    private final ToDoRepository todoRepository;
 
     public ToDoServiceImpl(ToDoRepository todoRepository) {
         this.todoRepository = todoRepository;
@@ -57,5 +59,11 @@ public class ToDoServiceImpl implements ToDoService {
     public List<ToDo> getByUserId(long userId) {
         List<ToDo> todos = todoRepository.getByUserId(userId);
         return todos.isEmpty() ? new ArrayList<>() : todos;
+    }
+
+    public boolean canReadTodo(long todoID){
+        long userID = ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getUserId();
+        ToDo toDo = readById(todoID);
+        return toDo.getCollaborators().stream().anyMatch(c -> c.getId() == userID) || toDo.getOwner().getId() == userID;
     }
 }

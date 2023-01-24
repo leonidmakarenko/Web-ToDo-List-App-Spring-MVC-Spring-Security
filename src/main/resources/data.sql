@@ -1,9 +1,9 @@
 INSERT INTO roles (id, name) VALUES (1, 'ADMIN');
 INSERT INTO roles (id, name) VALUES (2, 'USER');
+INSERT INTO roles (id, name) VALUES (3, 'TESTER');
 
 INSERT INTO users (id, first_name, last_name, email, password, role_id) VALUES (5, 'Nick', 'Green', 'nick@mail.com', '$2a$12$5/gvOUL6JdzaWg0Dkd0Tke6TdQnPUy9a0goongBfZO1TXbEWX1aEG', 2);
 INSERT INTO users (id, first_name, last_name, email, password, role_id) VALUES (6, 'Nora', 'White', 'nora@mail.com', '$2a$12$FApTFKCAchrriXZj0bJSrupEkFTCQuRZslLq3dErer6eztHrI04wa', 2);
---INSERT INTO users (id, first_name, last_name, email, password, role_id) VALUES (6, 'Nora', 'White', 'nora@mail.com', '$2a$12$hjRnmlFgqxe1wQetmX9o.uPATMVns8MeaHKeqDaBBIA6C8th7RQlO', 2);
 INSERT INTO users (id, first_name, last_name, email, password, role_id) VALUES (4, 'Mike', 'Brown', 'mike@mail.com', '$2a$12$P7G7DmZwgBb6/E6wPMkdyuG0bQd7lDyhLfKXWXmRsXtXHMkqhR7ya', 1);
 
 INSERT INTO states (id, name) VALUES (5, 'New');

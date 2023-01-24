@@ -1,9 +1,8 @@
 package leo.springwebapp.spring_web_todolist.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 
-import java.util.Collection;
+import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -36,11 +35,11 @@ public class User {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @ManyToMany
-    @JoinTable(name = "accounts",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Collection<Role> roles;
+//    @ManyToMany
+//    @JoinTable(name = "accounts",
+//            joinColumns = @JoinColumn(name = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id"))
+//    private Collection<Role> roles;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE)
     private List<ToDo> myTodos;

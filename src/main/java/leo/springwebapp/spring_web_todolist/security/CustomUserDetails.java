@@ -9,7 +9,7 @@ import java.util.Collection;
 
 @Component("webUserDetails")
 public class CustomUserDetails implements UserDetails {
-	
+
 	private String userName;
 	private String password;
 	private long userId;
@@ -17,18 +17,8 @@ public class CustomUserDetails implements UserDetails {
 	private Collection<? extends GrantedAuthority> authorities;
 	
 	@Autowired
-	public CustomUserDetails() {
-	}
-	
-//	@Autowired
-//	public WebUserDetails(User user) {
-//		this.userName = user.getEmail();
-//		this.userId = user.getId();
-//		this.password = user.getPassword();
-//		this.userRole = user.getRole().getName();
-//		this.authorities = Collections.singleton(new SimpleGrantedAuthority(user.getRole().getName()));
-//	}
-	
+	public CustomUserDetails() {}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;
@@ -60,9 +50,7 @@ public class CustomUserDetails implements UserDetails {
 		return userId;
 	}
 	
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+	public void setUserId(long userId) { this.userId = userId; }
 	
 	public String getUserRole() {
 		return userRole;

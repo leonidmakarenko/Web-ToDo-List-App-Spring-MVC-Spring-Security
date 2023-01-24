@@ -11,7 +11,7 @@ import java.util.Collection;
 
 @Component
 public class CustomAuthenticationToken implements Authentication {
-	
+
 	private final UserDetails userDetails;
 	private boolean isAuthenticated;
 
@@ -19,12 +19,7 @@ public class CustomAuthenticationToken implements Authentication {
 	public CustomAuthenticationToken(@Qualifier("webUserDetails") UserDetails userDetails) {
 		this.userDetails = userDetails;
 	}
-	
-//	@Autowired
-//	public WebAuthenticationToken(UserDetails userDetails) {
-//		this.userDetails = (WebUserDetails)userDetails;
-//	}
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return userDetails.getAuthorities();

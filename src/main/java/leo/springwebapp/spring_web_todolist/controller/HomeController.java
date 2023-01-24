@@ -8,25 +8,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Arrays;
+import java.util.Collections;
 
 @Controller
 public class HomeController {
     private final UserService userService;
 
     @Autowired
-//    private WebSecurityConfigurer webSecurityConfigurer;
     public HomeController(UserService userService) {
         this.userService = userService;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping({"/", "home"})
     public String home(Model model) {
-        if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().findFirst().get().getAuthority().equals("ADMIN")) {
+        if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream().anyMatch(auth -> auth.getAuthority().equals("ADMIN"))) {
             model.addAttribute("users", userService.getAll());
         } else {
-            model.addAttribute("users", Arrays.asList(userService.readByEmail(SecurityContextHolder.getContext().getAuthentication().getName())));
+            model.addAttribute("users", Collections.singletonList(userService.readByEmail(SecurityContextHolder.getContext().getAuthentication().getName())));
         }
         return "home";
     }

@@ -11,10 +11,10 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div class="col-md-offset-2 col-sm-6">
     <h2>Update Task</h2>
 
-    <form class="form-horizontal" th:action="@{|/tasks/create/todos/${task.todoId}|}" th:object="${task}" method="post">
+    <form class="form-horizontal" th:action="@{|/tasks/${task_id}/update/todos/${task.todoId}|}" th:object="${task}" method="post">
         <div class="form-group">
             <label class="control-label" for="id">Id:</label>
-            <input class="form-control" type="text" th:field="*{id}" id="id" th:value="*{id}" disabled/>
+            <input class="form-control" type="text" th:field="*{id}" id="id" th:value="*{id}" readonly/>
         </div>
         <div class="form-group">
             <label class="control-label" for="name">Name:</label>
@@ -48,8 +48,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
         <input class="btn btn" type="reset" value="Clear"/>
 
 
-        <input type="hidden" name="id" th:value="*{id}">
-        <input type="hidden" name="todoId" th:value="${task.todoId}">
+<!--        <input type="hidden" name="id" th:value="*{id}">-->
+<!--        <input type="hidden" name="todoId" th:value="${task.todoId}">-->
     </form>
 </div>
 <a th:href="@{|/todos/${task.todoId}/tasks|}">Go to Task List</a>

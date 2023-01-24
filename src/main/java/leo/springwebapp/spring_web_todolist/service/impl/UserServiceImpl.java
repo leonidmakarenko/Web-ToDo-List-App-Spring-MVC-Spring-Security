@@ -1,6 +1,5 @@
 package leo.springwebapp.spring_web_todolist.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import leo.springwebapp.spring_web_todolist.exception.NullEntityReferenceException;
 import leo.springwebapp.spring_web_todolist.model.User;
 import leo.springwebapp.spring_web_todolist.repository.UserRepository;
@@ -9,19 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
 
@@ -65,4 +66,5 @@ public class UserServiceImpl implements UserService {
         List<User> users = userRepository.findAll();
         return users.isEmpty() ? new ArrayList<>() : users;
     }
+
 }

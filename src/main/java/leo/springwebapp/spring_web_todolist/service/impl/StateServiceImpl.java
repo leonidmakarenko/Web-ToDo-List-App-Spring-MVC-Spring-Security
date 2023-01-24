@@ -1,30 +1,30 @@
 package leo.springwebapp.spring_web_todolist.service.impl;
 
-import jakarta.persistence.EntityNotFoundException;
 import leo.springwebapp.spring_web_todolist.exception.NullEntityReferenceException;
 import leo.springwebapp.spring_web_todolist.model.State;
 import leo.springwebapp.spring_web_todolist.repository.StateRepository;
 import leo.springwebapp.spring_web_todolist.service.StateService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class StateServiceImpl implements StateService {
-    private StateRepository stateRepository;
+    private final StateRepository stateRepository;
 
     public StateServiceImpl(StateRepository stateRepository) {
         this.stateRepository = stateRepository;
     }
 
     @Override
-    public State create(State role) {
-        if (role != null) {
-            return stateRepository.save(role);
+    public State create(State state) {
+        if (state != null) {
+            return stateRepository.save(state);
         }
-        throw new NullEntityReferenceException("State cannot be 'null'");
+        throw new NullEntityReferenceException("State cannot be null");
     }
 
     @Override
@@ -34,10 +34,10 @@ public class StateServiceImpl implements StateService {
     }
 
     @Override
-    public State update(State role) {
-        if (role != null) {
-            readById(role.getId());
-            return stateRepository.save(role);
+    public State update(State state) {
+        if (state != null) {
+            readById(state.getId());
+            return stateRepository.save(state);
         }
         throw new NullEntityReferenceException("State cannot be 'null'");
     }

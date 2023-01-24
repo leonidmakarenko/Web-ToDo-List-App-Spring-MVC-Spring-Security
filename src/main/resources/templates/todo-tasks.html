@@ -47,8 +47,8 @@
     <h3>Collaborators:</h3>
     <span th:if="${authority}">
         <form class="form-horizontal" th:action="@{/todos/{id}/add(id = ${todo.id})}" method="get" >
-            <select class="form-control" name="user_id" id="users">
-                <option>Select collaborator...</option>
+            <select class="form-control" name="user_id" id="users" th:action="@{/todos/{id}/add(id = ${todo.id})}" method="get">
+                <option value="-1">Select collaborator...</option>
                 <option th:each="user : ${users}" th:value="${user.id}"
                         th:text="${user.firstName + ' ' + user.lastName}"></option>
             </select>

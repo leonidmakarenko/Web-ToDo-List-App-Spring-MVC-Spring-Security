@@ -14,10 +14,5 @@ public interface ToDoRepository extends JpaRepository<ToDo, Long> {
             "select id, title, created_at, owner_id from todos inner join todo_collaborator on id = todo_id and " +
             "collaborator_id = ?1", nativeQuery = true)
     List<ToDo> getByUserId(long userId);
-}
 
-//v.2 without query
-//@Repository
-//public interface ToDoRepository extends JpaRepository<ToDo, Long> {
-//    public List<ToDo> findToDoByOwner_Id(Long owner_Id);
-//}
+}

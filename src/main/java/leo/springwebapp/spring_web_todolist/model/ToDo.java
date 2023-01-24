@@ -1,8 +1,10 @@
 package leo.springwebapp.spring_web_todolist.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
+
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,7 +27,6 @@ public class ToDo {
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    @SuppressWarnings("JpaAttributeTypeInspection")
     @OneToMany(mappedBy = "todo", cascade = CascadeType.REMOVE)
     private List<Task> tasks;
 
