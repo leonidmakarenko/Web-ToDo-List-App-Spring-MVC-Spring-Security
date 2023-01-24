@@ -1,5 +1,6 @@
 # Web-ToDo-List-App-Spring-MVC-Spring-Security
-Pet Project. Monolith Web App with Spring MVC and Spring Security (authentication and authorization) 
+Pet Project. (master branch)
+Monolith Web App with Spring MVC and Spring Security (authentication and authorization) 
 
 Pre-loaded users (login, password, role):
 
