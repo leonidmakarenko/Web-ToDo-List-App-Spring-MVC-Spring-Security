@@ -7,7 +7,7 @@ import leo.springwebapp.spring_web_todolist.security.CustomUserDetails;
 import leo.springwebapp.spring_web_todolist.service.TaskService;
 import leo.springwebapp.spring_web_todolist.service.ToDoService;
 import leo.springwebapp.spring_web_todolist.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Controller("toDoController")
 @RequestMapping("/todos")
 public class ToDoController {
@@ -27,13 +28,6 @@ public class ToDoController {
     private final ToDoService todoService;
     private final TaskService taskService;
     private final UserService userService;
-
-    @Autowired
-    public ToDoController(ToDoService todoService, TaskService taskService, UserService userService) {
-        this.todoService = todoService;
-        this.taskService = taskService;
-        this.userService = userService;
-    }
 
     @PreAuthorize("hasAuthority('ADMIN') or authentication.details.userId == #ownerId")
     @GetMapping("/create/users/{owner_id}")

@@ -1,7 +1,7 @@
 package leo.springwebapp.spring_web_todolist.controller;
 
 import leo.springwebapp.spring_web_todolist.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,14 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Collections;
 
+@RequiredArgsConstructor
 @Controller
 public class HomeController {
     private final UserService userService;
-
-    @Autowired
-    public HomeController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping({"/", "home"})

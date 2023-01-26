@@ -7,7 +7,7 @@ import leo.springwebapp.spring_web_todolist.model.Task;
 import leo.springwebapp.spring_web_todolist.service.StateService;
 import leo.springwebapp.spring_web_todolist.service.TaskService;
 import leo.springwebapp.spring_web_todolist.service.ToDoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,19 +15,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/tasks")
 public class TaskController {
 	private final TaskService taskService;
     private final ToDoService todoService;
     private final StateService stateService;
-
-    @Autowired
-    public TaskController(TaskService taskService, ToDoService todoService, StateService stateService) {
-        this.taskService = taskService;
-        this.todoService = todoService;
-        this.stateService = stateService;
-    }
 
     @PreAuthorize("hasAuthority('ADMIN') or @toDoServiceImpl.canReadTodo(#todoId)")
     @GetMapping("/create/todos/{todo_id}")

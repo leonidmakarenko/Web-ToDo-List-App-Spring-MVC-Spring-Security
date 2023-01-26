@@ -1,7 +1,6 @@
 package leo.springwebapp.spring_web_todolist.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,16 +8,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
+@RequiredArgsConstructor
 @Component
 public class CustomAuthenticationToken implements Authentication {
-
 	private final UserDetails userDetails;
 	private boolean isAuthenticated;
-
-	@Autowired
-	public CustomAuthenticationToken(@Qualifier("webUserDetails") UserDetails userDetails) {
-		this.userDetails = userDetails;
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -54,5 +48,4 @@ public class CustomAuthenticationToken implements Authentication {
 	public String getName() {
 		return userDetails.getUsername();
 	}
-	
 }

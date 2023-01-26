@@ -4,19 +4,17 @@ import leo.springwebapp.spring_web_todolist.exception.NullEntityReferenceExcepti
 import leo.springwebapp.spring_web_todolist.model.Task;
 import leo.springwebapp.spring_web_todolist.repository.TaskRepository;
 import leo.springwebapp.spring_web_todolist.service.TaskService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
-
-    public TaskServiceImpl(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
 
     @Override
     public Task create(Task task) {

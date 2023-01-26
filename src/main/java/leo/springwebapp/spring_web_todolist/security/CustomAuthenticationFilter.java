@@ -1,6 +1,7 @@
 package leo.springwebapp.spring_web_todolist.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -17,7 +18,7 @@ import java.io.IOException;
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	@Autowired
-	public CustomAuthenticationFilter(CustomAuthenticationManager authenticationManager) {
+	public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
 		setAuthenticationManager(authenticationManager);
 	}
 

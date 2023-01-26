@@ -5,6 +5,7 @@ import leo.springwebapp.spring_web_todolist.model.ToDo;
 import leo.springwebapp.spring_web_todolist.repository.ToDoRepository;
 import leo.springwebapp.spring_web_todolist.security.CustomUserDetails;
 import leo.springwebapp.spring_web_todolist.service.ToDoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +13,11 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+@RequiredArgsConstructor
 @Service
 public class ToDoServiceImpl implements ToDoService {
 
     private final ToDoRepository todoRepository;
-
-    public ToDoServiceImpl(ToDoRepository todoRepository) {
-        this.todoRepository = todoRepository;
-    }
 
     @Override
     public ToDo create(ToDo todo) {

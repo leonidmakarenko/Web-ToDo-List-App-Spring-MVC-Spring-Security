@@ -1,11 +1,11 @@
 package leo.springwebapp.spring_web_todolist.controller;
 
 import leo.springwebapp.spring_web_todolist.model.User;
-import leo.springwebapp.spring_web_todolist.security.CustomAuthenticationManager;
 import leo.springwebapp.spring_web_todolist.service.RoleService;
 import leo.springwebapp.spring_web_todolist.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,22 +20,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
     private final RoleService roleService;
-    private final CustomAuthenticationManager manager;
+    private final AuthenticationManager manager;
     private final PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserController(UserService userService, RoleService roleService, CustomAuthenticationManager manager,
-                          PasswordEncoder passwordEncoder) {
-        this.userService = userService;
-        this.roleService = roleService;
-        this.manager = manager;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @PreAuthorize("hasAuthority('ADMIN') or !isAuthenticated()")
     @GetMapping("/create")

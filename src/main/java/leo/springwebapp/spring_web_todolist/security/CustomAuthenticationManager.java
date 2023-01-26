@@ -1,6 +1,6 @@
 package leo.springwebapp.spring_web_todolist.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -9,15 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Component
 public class CustomAuthenticationManager implements AuthenticationManager {
-
 	private final List<AuthenticationProvider> authenticationProviders;
-	
-	@Autowired
-	public CustomAuthenticationManager(List<AuthenticationProvider> authenticationProviders) {
-		this.authenticationProviders = authenticationProviders;
-	}
 
 	@Override
 	public Authentication authenticate(Authentication authentication) {

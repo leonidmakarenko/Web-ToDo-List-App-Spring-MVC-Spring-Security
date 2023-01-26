@@ -4,6 +4,7 @@ import leo.springwebapp.spring_web_todolist.exception.NullEntityReferenceExcepti
 import leo.springwebapp.spring_web_todolist.model.State;
 import leo.springwebapp.spring_web_todolist.repository.StateRepository;
 import leo.springwebapp.spring_web_todolist.service.StateService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -11,13 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class StateServiceImpl implements StateService {
     private final StateRepository stateRepository;
-
-    public StateServiceImpl(StateRepository stateRepository) {
-        this.stateRepository = stateRepository;
-    }
 
     @Override
     public State create(State state) {
