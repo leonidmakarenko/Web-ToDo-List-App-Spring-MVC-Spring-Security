@@ -40,11 +40,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User role) {
-        if (role != null) {
-            readById(role.getId());
-            role.setPassword(passwordEncoder.encode(role.getPassword()));
-            return userRepository.save(role);
+    public User update(User user) {
+        if (user != null) {
+            readById(user.getId());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            return userRepository.save(user);
         }
         throw new NullEntityReferenceException("User cannot be 'null'");
     }

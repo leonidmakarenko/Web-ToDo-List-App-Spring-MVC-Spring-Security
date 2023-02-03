@@ -20,23 +20,20 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 //jsr250Enabled = true)
 
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
-//    private final CustomAuthenticationFilter authenticationFilter;
-
-//    @Autowired
-//    public SecurityConfigurer(@Lazy CustomAuthenticationFilter authenticationFilter) {
-//        this.authenticationFilter = authenticationFilter;
-//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/login", "/users/create").permitAll().anyRequest().authenticated()
+        http.authorizeRequests()
+                .antMatchers("/login", "/users/create")
+                .permitAll().anyRequest()
+                .authenticated()
 //         .and()
 //            .formLogin()
 //            .loginPage("/login")
 //            .defaultSuccessUrl("/home")
 //            .failureUrl("/login?error=true")
 //            .permitAll()
-                .and()
+            .and()
                 .logout()
 //            .logoutUrl("/perform-logout")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/perform-logout", "POST"))
@@ -45,7 +42,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/login").permitAll();
 
-//        http.addFilterAt(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.exceptionHandling().authenticationEntryPoint(
                 (request, response, authException) -> response.sendRedirect(request.getContextPath() + "/login"));
@@ -73,7 +69,6 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 //                .clearAuthentication(true).deleteCookies("JSESSIONID").logoutSuccessUrl("/login").permitAll().and()
 //                .exceptionHandling().accessDeniedPage("/not-found");
 //
-//        http.addFilterAt(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 //
 //        http.exceptionHandling().authenticationEntryPoint(
 //                (request, response, authException) -> response.sendRedirect(request.getContextPath() + "/login"));

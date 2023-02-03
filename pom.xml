@@ -61,6 +61,12 @@
             <scope>runtime</scope>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.h2database</groupId>-->
+<!--            <artifactId>h2</artifactId>-->
+<!--            &lt;!&ndash;            <scope>runtime</scope>&ndash;&gt;-->
+<!--        </dependency>-->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -85,10 +91,6 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--        	<groupId>org.springframework.boot</groupId>-->
-<!--        	<artifactId>spring-boot-starter-logging</artifactId>-->
-<!--        </dependency>-->
 
     </dependencies>
 
@@ -97,19 +99,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.project-lombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
             </plugin>
-
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                &lt;!&ndash; <version>2.22.2</version> &ndash;&gt;-->
-<!--                <configuration>-->
-<!--                    <includes>-->
-<!--                        <include>**/*.java</include>-->
-<!--                    </includes>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-
         </plugins>
     </build>
 
