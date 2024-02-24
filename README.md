@@ -9,7 +9,7 @@ Authorization is implemented at the controller layer, based on annotations using
 
 The jsp template display layer is implemented using html, css, thymeleaf.
 	
-The demo data was loaded into the database in two ways (by sprinting using the data.sql file at startup and automatically loading after the application is launched (bootstrap level). 
+The demo data was loaded into the database in two ways (by Spring, using the data.sql file at startup and automatically loading after the application is launched (bootstrap level). 
 
 All this is combined with SpringBoot and configuration files.
 
